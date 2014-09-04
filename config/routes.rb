@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'students#index'
-  resources :students, only: [:index, :new, :create] do
+  resources :students, only: [:index, :new, :create, :show] do
     collection do
-      get 'select'
+      post 'select'
     end
   end
 

@@ -1,6 +1,6 @@
 %h1 Welcome to Student Picker
 
-= button_to "Pick Student", select_students_path, method: "get"
+= button_to "Pick Student", select_students_path, method: "post"
 
 %p Student List:
 %ul#students= render @students

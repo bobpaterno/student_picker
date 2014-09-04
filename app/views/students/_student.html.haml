@@ -1,2 +1,9 @@
 %li
   = student.name
+  %span
+  - if student.last_called.nil?
+    = "Student not called yet"
+  -else
+    = "last called "
+    = time_ago_in_words(student.last_called)
+    = "ago "

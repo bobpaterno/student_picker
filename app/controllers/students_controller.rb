@@ -18,8 +18,28 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+    @student = Student.find(params[:id])
+  end
+
+  def call_on(student)
+    if student.nil?
+      flash.notice = "Sorry, all students picked in the last hour"
+      redirect_to students_path
+    else
+      student.last_called = Time.zone.now
+      if student.save
+        flash.now[:alert] = "Call on #{student.name}"
+      else
+        flash.now[:alert] = "Sorry, could not update student time data"
+      end
+      redirect_to student_path(student)
+    end
+  end
+
   def select
-    
+    student = Student.pickable.sample
+    call_on(student)
   end
 
   protected
