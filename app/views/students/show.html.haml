@@ -1,2 +1,4 @@
-%h1 Pick
-%h2= @student.name
+%h1= "Pick #{@student.name}"
+
+%p
+  =link_to "Home", students_path
